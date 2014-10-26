@@ -1,17 +1,17 @@
-%define		qtver		4.8.5
+%define		qtver		5.3.1
 
 Summary:	libsysstat
 Name:		libsysstat
-Version:	0.1.0
+Version:	0.2.0
 Release:	0.1
 License:	GPLv2 and LGPL-2.1+
 Group:		X11/Libraries
-Source0:	http://lxqt.org/downloads/libsysstat/0.1.0/%{name}-%{version}.tar.xz
-# Source0-md5:	6034052ab9c228aeb5e48d863fa78f41
+Source0:	http://lxqt.org/downloads/libsysstat/%{version}/%{name}-%{version}.tar.gz
+# Source0-md5:	bf404af3e9f5edb414161e30d28b0be5
 URL:		http://www.lxqt.org/
-BuildRequires:	QtCore-devel >= %{qtver}
-BuildRequires:	QtGui-devel >= %{qtver}
-BuildRequires:	QtXml-devel >= %{qtver}
+BuildRequires:	Qt5Core-devel >= %{qtver}
+BuildRequires:	Qt5Gui-devel >= %{qtver}
+BuildRequires:	Qt5Xml-devel >= %{qtver}
 BuildRequires:	cmake >= 2.8.3
 BuildRequires:	xz-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -24,9 +24,9 @@ Summary:	libsysstat - header files and development documentation
 Summary(pl.UTF-8):	Pliki nagłówkowe i dokumentacja do libsysstat
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	QtCore-devel >= %{qtver}
-Requires:	QtGui-devel >= %{qtver}
-Requires:	QtXml-devel >= %{qtver}
+Requires:	Qt5Core-devel >= %{qtver}
+Requires:	Qt5Gui-devel >= %{qtver}
+Requires:	Qt5Xml-devel >= %{qtver}
 Obsoletes:	razor-qt-devel
 
 %description devel
@@ -38,12 +38,13 @@ Pakiet ten zawiera pliki nagłówkowe i dokumentację potrzebną przy
 pisaniu własnych programów wykorzystujących libsysstat.
 
 %prep
-%setup -q -c %{name}-%{version}
+%setup -q -n %{name}
 
 %build
 install -d build
 cd build
 %cmake \
+    -DUSE_QT5=ON \
 	../
 
 %{__make}
@@ -62,12 +63,12 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%ghost %{_libdir}/libsysstat.so.0
-%attr(755,root,root) %{_libdir}/libsysstat.so.*.*.*
+%ghost %{_libdir}/libsysstat-qt5.so.0
+%attr(755,root,root) %{_libdir}/libsysstat-qt5.so.*.*.*
 
 %files devel
 %defattr(644,root,root,755)
-%{_includedir}/sysstat
-%{_libdir}/libsysstat.so
-%{_pkgconfigdir}/sysstat.pc
-%{_datadir}/cmake/sysstat
+%{_includedir}/sysstat-qt5
+%{_libdir}/libsysstat-qt5.so
+%{_pkgconfigdir}/sysstat-qt5.pc
+%{_datadir}/cmake/sysstat-qt5
