@@ -2,12 +2,12 @@
 
 Summary:	libsysstat
 Name:		libsysstat
-Version:	0.2.0
-Release:	0.1
+Version:	0.3.1
+Release:	1
 License:	GPLv2 and LGPL-2.1+
 Group:		X11/Libraries
-Source0:	http://lxqt.org/downloads/libsysstat/%{version}/%{name}-%{version}.tar.gz
-# Source0-md5:	bf404af3e9f5edb414161e30d28b0be5
+Source0:	http://downloads.lxqt.org/libsysstat/%{version}/%{name}-%{version}.tar.gz
+# Source0-md5:	8513824b127fd1bdcd0ec32f4ba790d6
 URL:		http://www.lxqt.org/
 BuildRequires:	Qt5Core-devel >= %{qtver}
 BuildRequires:	Qt5Gui-devel >= %{qtver}
@@ -38,13 +38,12 @@ Pakiet ten zawiera pliki nagłówkowe i dokumentację potrzebną przy
 pisaniu własnych programów wykorzystujących libsysstat.
 
 %prep
-%setup -q -n %{name}
+%setup -q
 
 %build
 install -d build
 cd build
 %cmake \
-    -DUSE_QT5=ON \
 	../
 
 %{__make}
