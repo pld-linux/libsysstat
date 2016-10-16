@@ -2,12 +2,12 @@
 
 Summary:	libsysstat
 Name:		libsysstat
-Version:	0.3.1
+Version:	0.3.2
 Release:	1
 License:	GPLv2 and LGPL-2.1+
 Group:		X11/Libraries
-Source0:	http://downloads.lxqt.org/libsysstat/%{version}/%{name}-%{version}.tar.gz
-# Source0-md5:	8513824b127fd1bdcd0ec32f4ba790d6
+Source0:	http://downloads.lxqt.org/libsysstat/%{version}/%{name}-%{version}.tar.xz
+# Source0-md5:	692042112d63d18b2f38f2f939061a6c
 URL:		http://www.lxqt.org/
 BuildRequires:	Qt5Core-devel >= %{qtver}
 BuildRequires:	Qt5Gui-devel >= %{qtver}
